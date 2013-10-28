@@ -1,0 +1,11 @@
+Medidor.js
+
+================
+
+Medidor.js é um pequeno trecho de código que cria um arco com um ponteiro, como um velocímetro, para fins genéricos. 
+
+Este medidor não possui nenhuma media fixa, apenas oferece uma área toda desenhada em CANVAS, trabalhando com ângulos. 
+
+Se for necessário passar alguma medida, é preciso transformar as medidas com que se trabalha em GRAUS 
+(não funciona com RADIANOS), e passar os valores convertidos para que o medidor aponte para a posição desejada.
+
