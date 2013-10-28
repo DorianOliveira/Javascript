@@ -1,4 +1,4 @@
-<h2>Medidor.js</h2>
+Medidor.js
 
 ================
 
