@@ -1,5 +1,4 @@
 
-
 var medidor =
 {
 
@@ -34,14 +33,14 @@ var medidor =
 		var context = canvas.getContext('2d');
 	    
 		this.x = canvas.width / 2;
-	    this.y = canvas.height / 2;
+	    	this.y = canvas.height / 2;
 	    
         
         
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	    
-        var medidor = this;
-	    var interval = setInterval(function(){
+        	var medidor = this;
+	    	var interval = setInterval(function(){
 	        
 			context.clearRect(0, 0, canvas.width, canvas.height);
 	   
@@ -72,10 +71,10 @@ var medidor =
 		var radius = this.arco.raio;
 		var startAngle =  this.arco.anguloInicial * Math.PI;
         
-	    var inicio = 2 - this.arco.anguloInicial;
-	    var endAngle = (-1 * inicio) * Math.PI + (this.ponteiro.anguloAtual / 180 * Math.PI);
+	    	var inicio = 2 - this.arco.anguloInicial;
+	    	var endAngle = (-1 * inicio) * Math.PI + (this.ponteiro.anguloAtual / 180 * Math.PI);
 	    
-	    var angleLimit = this.arco.anguloFinal * Math.PI;
+	    	var angleLimit = this.arco.anguloFinal * Math.PI;
 		var counterClockwise = false;
 	    
 	    
@@ -83,21 +82,23 @@ var medidor =
 		context.beginPath();
 		context.lineWidth = this.arco.espessura;
 		context.strokeStyle = this.arco.corFundo;
-	    context.arc(this.x, this.y, radius, startAngle, angleLimit, counterClockwise);
+	    	context.arc(this.x, this.y, radius, startAngle, angleLimit, counterClockwise);
 		context.stroke();
 		context.closePath();
-	    
-	    //Desenha a parte do arco que representa a media
-	    context.beginPath();
-	    context.strokeStyle = this.arco.corMedicao;
-	    context.arc(this.x, this.y, radius, startAngle, endAngle, counterClockwise);
-	    context.stroke();
-	    context.closePath();
+    
+	    	//Desenha a parte do arco que representa a media
+		context.beginPath();
+		context.strokeStyle = this.arco.corMedicao;
+		context.arc(this.x, this.y, radius, startAngle, endAngle, counterClockwise);
+		context.stroke();
+		context.closePath();
 	},
 
  	desenharPonteiro : function(canvas, context, angulo)
-    {
-        var posicaoPonteiro = this.y - this.ponteiro.posicao;
+    	{
+        	
+        	
+        	var posicaoPonteiro = this.y - this.ponteiro.posicao;
 		var heightPonteiro = posicaoPonteiro - this.ponteiro.altura;
 		
 	  	context.beginPath();
@@ -117,30 +118,31 @@ var medidor =
 	        
 			if(angulo > 0)
 			    this.ponteiro.anguloAtual += this.ponteiro.variacao;
-	        else   
-	            this.ponteiro.anguloAtual -= this.ponteiro.variacao;
+		        else   
+		            this.ponteiro.anguloAtual -= this.ponteiro.variacao;
 		}
 	    
-        context.beginPath();
-        context.lineWidth = 1;
-        context.fillStyle = '#555';	
+	        context.beginPath();
+	        context.lineWidth = 1;
+	        context.fillStyle = '#555';	
 		context.moveTo(this.x, posicaoPonteiro - 26);
-        context.lineTo(this.x+5, posicaoPonteiro - 26);
-    	context.lineTo(this.x, heightPonteiro);
-        context.moveTo(this.x+5, posicaoPonteiro - 26);
-        context.lineTo(this.x+5, posicaoPonteiro - 26);
-        context.lineTo(this.x, heightPonteiro);
+		
+	        context.lineTo(this.x+5, posicaoPonteiro - 26);
+	    	context.lineTo(this.x, heightPonteiro);
+	        context.moveTo(this.x+5, posicaoPonteiro - 26);
+	        context.lineTo(this.x+5, posicaoPonteiro - 26);
+	        context.lineTo(this.x, heightPonteiro);
 		context.fill();
-    
-        context.closePath();
-        context.beginPath();
-        context.fillStyle = '#444';	
-        
-        context.moveTo(this.x+5, posicaoPonteiro - 26);
-        context.lineTo(this.x+10, posicaoPonteiro - 26);
-        context.lineTo(this.x, heightPonteiro);
-        
-        context.fill();
+	    
+	        context.closePath();
+	        context.beginPath();
+	        context.fillStyle = '#444';	
+	        
+	        context.moveTo(this.x+5, posicaoPonteiro - 26);
+	        context.lineTo(this.x+10, posicaoPonteiro - 26);
+	        context.lineTo(this.x, heightPonteiro);
+	        
+	        context.fill();
 		context.closePath();
 	}
 
