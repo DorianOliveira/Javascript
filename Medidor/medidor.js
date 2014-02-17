@@ -1,3 +1,9 @@
+/*
+Medidor JS versao 1.0
+Dorian de Oliveira Torres
+dorian_oliveira@yahoo.com.br
+
+*/
 
 var medidor =
 {
