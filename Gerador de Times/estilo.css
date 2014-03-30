@@ -1,0 +1,14 @@
+.RemoverJogador
+{
+	cursor: pointer;
+}
+
+.label
+{
+	white-space: normal;
+}
+
+#section-resultado
+{
+	display: none;
+}

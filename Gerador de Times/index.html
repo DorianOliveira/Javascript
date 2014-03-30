@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gerador de Times</title>
+    
+    
+    
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="estilo.css">
+	
+
+  </head>
+  <body>
+
+  		<div class="container theme-showcase">
+
+  			
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<header class="page-header">
+						<h1>Gerador de Times</h1>
+					</header>  				
+
+					<section id="Jogadores">
+				  		<div class="row">
+							<div class="col-sm-6">
+
+								<div id="JogadoresAdicionados" class="panel panel-warning">
+					  				<div class="panel-heading">
+					  					Jogadores adicionados
+					  				</div>
+					  				<div class="panel-body">
+					  					<h4></h4>
+					  				</div>
+				  				</div>
+
+								
+
+				  				<div class="modal fade" id="modal-adicionar-jogador">
+				  					<div class="alert alert-danger alert-dismissable">
+				  						<button type="button" class="close" data-hide="alert" aria-hidden="true">
+				  							&times;</button>
+				  						<strong>Atenção!</strong>Já existe um jogador com este nome!
+
+				  					</div>
+
+				  					<div class="modal-dialog">
+				  						<div class="modal-content">
+				  							<div class="modal-header">
+				  								<button type="button" class="close"
+				  									data-dismiss="modal"
+				  									aria-hidden="true">x</button>
+				  									<h4 class="modal-title">Adicione o novo jogador</h4>
+				  							</div>
+				  							<div class="modal-body">
+				  								<input id="txtNovoJogador" type="text" class="form-control">
+				  							</div>
+				  							<div class="modal-footer">
+				  								<button	type="button" class="btn btn-default" data-dismiss="modal">Fechar
+				  								</button>
+
+				  								<button id="btnSalvarEFechar" type="button" class="btn btn-primary">Salvar e Fechar
+				  								</button>
+
+				  								<button id="btnSalvarEAdicionar" type="button" class="btn btn-primary">Salvar e  Adicionar outro
+				  								</button>
+
+				  							</div>
+				  						</div>
+				  					</div>
+
+
+
+
+				  				</div>
+
+								<button 
+									type="button"
+									id="btnAdicionarJogador" 
+									data-toggle="modal" 
+									data-target="#modal-adicionar-jogador" 
+									class="btn btn-success" >Adicionar Jogador
+								</button>
+							  		
+						  		<button 
+						  			type="button"
+						  			id="btnLimpar" 
+						  			class="btn btn-warning">Limpar</button>
+						  		
+						  		<button 
+						  			type="button"
+						  			id="btnSortearTimes" 
+						  			
+						  			data-toggle="modal"
+						  			data-target="#modal-sortear-times"
+						  			class="btn btn-default btn-lg">
+						  			<span class="glyphicon glyphicon-star"></span>Sortear Times
+						  		</button>
+
+								<div class="modal fade" id="modal-sortear-times">
+							  		<div class="modal-dialog">
+							  			<div class="modal-content">
+
+							  				<div class="modal-header">
+							  					<h4 class="modal-title">
+							  						Sorteando times...
+							  					</h4>
+							  				</div>
+							  				
+							  				<div class="modal-body">
+							  					
+
+
+							  					<h3 >Gerando times de
+							  						<span id="label-quantidade-jogadores" class="label label-success"></span> 
+							  						jogadores ...
+							  					</h3>
+							  				
+
+							  				</div>
+							  				<div class="modal-footer">
+							  				</div>
+							  			</div>
+							  		</div>	
+							  	</div>	
+
+				  			</div>
+
+							<div class="col-sm-6">
+								
+								<h3>Modo de jogo</h3>
+								
+								<div class="btn-group">	
+									<a data-value="Arena" class="botao-modo btn btn-success active">Arena</a>
+					  				<a data-value="Assault" class="botao-modo btn btn-success">Assault</a>
+					  				<a data-value="Just" class="botao-modo btn btn-success">Just</a>
+					  				<a data-value="Conquest" class="botao-modo btn btn-success">Conquest</a>
+					  				<a data-value="Random" class="botao-modo btn btn-success">Random</a>
+				  				</div>
+
+				  				<h3>Jogadores por time</h3>
+								
+								<div class="btn-group">	
+									<a data-value="2" class="botao-numero-jogadores btn btn-info active">2</a>
+					  				<a data-value="4" class="botao-numero-jogadores btn btn-info">4</a>
+					  				<a data-value="6" class="botao-numero-jogadores btn btn-info">6</a>
+					  				<a data-value="8" class="botao-numero-jogadores btn btn-info">8</a>
+				  				</div>
+							
+				  			</div>
+				  		</div>
+			  		</section>
+					
+
+			  		<section id="section-resultado">
+
+			  			<section id="Times">
+							<div class="page-header">
+					  			<h3>Times de 
+					  				<span id="jogadores-quantidade" class="label label-success"></span> jogadores 
+					  				gerados para o modo 
+					  				<span id="modo-selecionado" class="label label-success"></span>
+					  			</h3>
+					  		</div>	
+
+				  			<div class="row">
+					  			<div class="col-sm-6">
+					  				<div class="panel panel-primary" id="panel-time1">
+						  				<div class="panel-heading">
+						  					Time 1
+						  				</div>
+						  				<div class="panel-body">
+						  					<h4></h4>
+						  				</div>
+					  				</div>
+					  			</div>
+
+								<div class="col-sm-6">
+					  				<div class="panel panel-primary" id="panel-time2">
+						  				<div class="panel-heading">
+						  					Time 2
+						  				</div>
+						  				<div class="panel-body">
+						  					<h4></h4>
+						  				</div>
+					  				</div>
+					  			</div>
+							</div>
+			  			</section>	
+
+			  		
+						<section id="Sobraram" class="row">
+
+				  			<div class="col-sm-12">
+				  				<div class="panel panel-warning" id="panel-restantes">
+					  				<div class="panel-heading">
+					  					Sobraram
+					  				</div>
+					  				<div class="panel-body">
+					  					<h4></h4>
+					  				</div>
+				  				</div>
+				  			</div>
+			  			</section>
+
+			  		</section>
+				</div>
+  			</div>	
+
+		</div>
+		
+
+    <script src="jquery.js"></script>
+    <script src="configuracao.js"></script>
+    <script src="funcoes.js"></script>
+    <script src="eventos.js"></script>
+ 
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
