@@ -1,7 +1,7 @@
 var modoDeJogo;
 var numeroJogadores;
 var listaDeJogadores = new Array();
-
+var jogadorObrigatorio = false;
 
 var modos = [ 'Assault', 'Arena', 'Just', 'Conquest' ] ;
 
@@ -10,6 +10,7 @@ var modal =
 {
 	AdicionarJogador : $('#modal-adicionar-jogador'),
 	SortearTimes : $('#modal-sortear-times'),
+	AdicionarObrigatorio : $('#modal-adicionar-jogador-obrigatorio')
 }
 
 var delay = 
@@ -30,10 +31,14 @@ var keyboard =
 var campo = 
 {
 	novoJogador : $('#txtNovoJogador'),
+	novoJogadorObrigatorio : $('#txtNovoJogadorObrigatorio'),
+
 	botaoSalvar : $('#btnSalvar'),
 	botaoSalvarEAdicionar : $('#btnSalvarEAdicionar'),
 	botaoSalvarEFechar : $('#btnSalvarEFechar'),
+	botaoSalvarObrigatorio : $('#btnSalvarObrigatorio'),
 	botaoAdicionar : $('#btnAdicionarJogador'),
+	botaoAdicionarObrigatorio : $('#btnAdicionarJogadorObrigatorio'),
 	
 	botaoLimpar : $('#btnLimpar'),
 
@@ -60,9 +65,8 @@ var campo =
 var label = 
 {
 
-	adicionarJogador : function(id, nome, tipoLabel, funcaoExcluir)
+	adicionarJogador : function(id, nome, obrigatorio, tipoLabel, funcaoExcluir)
 	{
-
 		var labelClass = 'success';
 
 		if(tipoLabel != undefined && tipoLabel != null)
@@ -86,6 +90,7 @@ var label =
 			}
 		}
 
+
 		labelClass = 'label-' + labelClass;
 
 		//Criacao do icone
@@ -100,6 +105,7 @@ var label =
 
 		label.addClass('label');
 		
+		
 		label.addClass(labelClass);
 
 		label.addClass('RemoverJogador');
@@ -112,17 +118,31 @@ var label =
 
 		//Adiciona texto no label
 		label.append('&nbsp;');
+		label.append('&nbsp;');
+
+		//Se o jogador for obrigatorio, adiciona o icone representativo
+		if(obrigatorio)
+		{
+			var icon_obrigatorio = $('<span></span>');
+			icon_obrigatorio.addClass('glyphicon');
+			icon_obrigatorio.addClass('glyphicon glyphicon-exclamation-sign');
+
+			label.append(icon_obrigatorio);
+		
+		}
+
 
 		
-		var stringFuncaoExcluir = 'RemoverJogador(this.id);return false;';
-		
+		//Adiciona a funcao excluir
 		if(funcaoExcluir != undefined && funcaoExcluir != null && funcaoExcluir)
 		{
-			label.attr('onclick', stringFuncaoExcluir);
+			label.attr('onclick', 'RemoverJogador(this.id);return false;');
 			
 			//Adiciona o icone no label
 			label.append(icon);
 		}
+
+
 
 		return label;
 	

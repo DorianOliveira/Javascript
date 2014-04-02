@@ -1,6 +1,6 @@
 
 
-function criarNovoJogador(nomeJogador)
+function criarNovoJogador(nomeJogador, obrigatorio)
 {
 	var jogador = {};
 
@@ -18,6 +18,7 @@ function criarNovoJogador(nomeJogador)
 
 	jogador.id = id
 	jogador.nome = nomeJogador;
+	jogador.obrigatorio = obrigatorio;
 
 	return jogador;
 }
@@ -39,17 +40,23 @@ function InserirJogador(nomeJogador)
 	if(!jogadorJaExistente)
 	{
 
+
 		EsconderAlert();
 
-		var novoJogador = criarNovoJogador(nomeJogador);
+		var novoJogador = criarNovoJogador(nomeJogador, jogadorObrigatorio);
+
+
 
 		listaDeJogadores.push(novoJogador)
+
+		var tipoLabel =  novoJogador.obrigatorio ? 'warning' : 'success';
 
 		area
 			.jogadoresAdicionados
 			.append
 			(
-				label.adicionarJogador(novoJogador.id, novoJogador.nome, 'default', true)
+				
+				label.adicionarJogador(novoJogador.id, novoJogador.nome, novoJogador.obrigatorio, tipoLabel, true)
 			);
 
 		return true;
@@ -59,11 +66,6 @@ function InserirJogador(nomeJogador)
 		ExibirAlert();	
 		return false;
 	}
-}
-
-function EscreverNomeJogador()
-{
-
 }
 
 function RemoverJogador(idJogador)
@@ -96,16 +98,18 @@ function RemoverJogador(idJogador)
 	}
 }
 
-function SalvarJogador()
+function Salvar(campo)
 {
-	if(campo.novoJogador.val() != '')
+	
+	if(campo.val() != '')
 	{
-		
-		var nomeNovoJogador = campo.novoJogador.val();
+			
+		var nomeNovoJogador = campo.val();
 
 		if(InserirJogador(nomeNovoJogador))
 		{
-			campo.novoJogador.val('');
+			campo.val('');
+
 			return true;
 		}
 		
@@ -113,6 +117,25 @@ function SalvarJogador()
 	}
 
 	return false;
+}
+
+
+function SalvarJogador()
+{
+
+	return Salvar(campo.novoJogador);
+
+
+}
+
+
+
+function SalvarJogadorObrigatorio()
+{
+
+	return Salvar(campo.novoJogadorObrigatorio);
+
+
 }
 
 function ExibirAlert()
@@ -244,4 +267,17 @@ function EscreverTimes(time1, time2, restantes)
 			);
 		};
 	}
+}
+
+function Adicionar()
+{
+	EsconderAlert();
+
+	//Delay para definir o focus do campo de texto
+	setInterval(function(){
+
+		campo.novoJogador.focus();
+		campo.novoJogadorObrigatorio.focus();
+
+	}, 100);
 }

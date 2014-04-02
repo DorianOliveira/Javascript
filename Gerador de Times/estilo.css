@@ -12,3 +12,20 @@
 {
 	display: none;
 }
+
+#btnSortearTimes
+{
+	width: 100%;
+	padding: 20px;
+	margin-top: 2%;
+}
+
+.botes-principais
+{
+	text-align: center;
+}
+
+.alert
+{
+	display: none;
+}

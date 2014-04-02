@@ -29,13 +29,23 @@ campo.botaoSalvarEAdicionar.on('click', function(e){
 
 });
 
-campo.botaoSalvarEFechar.on('click', function(e){
+$(campo.botaoSalvarEFechar).on('click', function(e){
 
 
 	if(SalvarJogador())
 		modal.AdicionarJogador.modal('hide');
-
 });
+
+
+campo.botaoSalvarObrigatorio.on('click', function(e){
+
+
+	if(SalvarJogadorObrigatorio())
+	{
+		modal.AdicionarObrigatorio.modal('hide');
+	}
+});
+
 
 
 campo.novoJogador.on('keypress', function(e){
@@ -48,26 +58,42 @@ campo.novoJogador.on('keypress', function(e){
 
 });
 
-campo.botaoAdicionar.on('click', function(e){
 
-	EsconderAlert();
-
-
-	//Delay para definir o focus do campo de texto
-	setInterval(function(){
-
-		campo.novoJogador.focus();	
-	}, 100);
-	
+campo.novoJogadorObrigatorio.on('keypress', function(e){
+    
+    if(
+    	e.keyCode == keyboard.button.ENTER 
+    	|| e.keyCode == keyboard.button.CTRL_ENTER)
+    {
+    	campo.botaoSalvarObrigatorio.click()
+    }
 
 });
 
 
+
+campo.botaoAdicionar.on('click', function(e){
+	Adicionar();
+	
+});
+
+
+campo.botaoAdicionarObrigatorio.on('click', function(e){
+	
+	Adicionar();
+
+	jogadorObrigatorio = true;
+
+	
+});
+
+
+
+
+
 campo.botaoFecharAlert.on('click', function(e)
 {
-
 	$(this).parent().hide(delay.alert);	
-
 });
 
 campo.botaoLimpar.on('click', function(e)
@@ -145,6 +171,10 @@ campo.botaoSortearTimes.on('click', function(e)
 		}, 2000);
 
 
+});
 
+modal.AdicionarObrigatorio.on('hidden.bs.modal', function(e){
+
+	jogadorObrigatorio = false;
 
 });

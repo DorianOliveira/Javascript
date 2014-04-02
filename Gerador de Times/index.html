@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Gerador de Times</title>
-    
-    
-    
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="estilo.css">
@@ -15,7 +12,6 @@
   <body>
 
   		<div class="container theme-showcase">
-
   			
 			<div class="panel panel-default">
 				<div class="panel-body">
@@ -34,10 +30,9 @@
 					  				<div class="panel-body">
 					  					<h4></h4>
 					  				</div>
-				  				</div>
+				  				</div>	
 
-								
-
+				  				<!-- Modal adicionar jogador -->
 				  				<div class="modal fade" id="modal-adicionar-jogador">
 				  					<div class="alert alert-danger alert-dismissable">
 				  						<button type="button" class="close" data-hide="alert" aria-hidden="true">
@@ -70,24 +65,75 @@
 				  							</div>
 				  						</div>
 				  					</div>
+				  				</div>
 
 
+								<!-- Modal adicionar jogador obrigatorio -->
+				  				<div class="modal fade" id="modal-adicionar-jogador-obrigatorio">
+				  		
+									<div class="alert alert-danger alert-dismissable">
+				  						<button type="button" class="close" data-hide="alert" aria-hidden="true">
+				  							&times;</button>
+				  						<strong>Atenção!</strong>Já existe um jogador com este nome!
 
+				  					</div>
+				  					<div class="modal-dialog">
+				  						<div class="modal-content">
+				  							<div class="modal-header">
+				  								<button type="button" class="close"
+				  									data-dismiss="modal"
+				  									aria-hidden="true">x</button>
+				  									<h4 class="modal-title">Adicione um jogador obrigatório</h4>
+				  							</div>
+				  							<div class="modal-body">
+				  								<input id="txtNovoJogadorObrigatorio" type="text" class="form-control">
+				  							</div>
+				  							<div class="modal-footer">
+
+				  								<button	type="button" class="btn btn-default" data-dismiss="modal">Fechar
+				  								</button>
+
+				  								<button id="btnSalvarObrigatorio" type="button" class="btn btn-primary">Salvar
+				  								</button>
+
+				  							</div>
+				  						</div>
+				  					</div>
 
 				  				</div>
 
-								<button 
-									type="button"
-									id="btnAdicionarJogador" 
-									data-toggle="modal" 
-									data-target="#modal-adicionar-jogador" 
-									class="btn btn-success" >Adicionar Jogador
-								</button>
-							  		
-						  		<button 
-						  			type="button"
-						  			id="btnLimpar" 
-						  			class="btn btn-warning">Limpar</button>
+				  				<div class="botes-principais">
+
+										<button 
+											type="button"
+											id="btnAdicionarJogador" 
+											data-toggle="modal" 
+											data-target="#modal-adicionar-jogador" 
+											class="btn btn-success" >
+												<span class="glyphicon glyphicon-plus">&nbsp;</span>
+												Novo jogador
+										</button>
+
+
+											<button 
+											type="button"
+											id="btnAdicionarJogadorObrigatorio" 
+											data-toggle="modal" 
+											data-target="#modal-adicionar-jogador-obrigatorio" 
+											class="btn btn-warning" >
+												<span class="glyphicon glyphicon glyphicon-exclamation-sign">&nbsp;</span>
+												Novo jogador obrigatório
+										</button>
+									  		
+								  		<button 
+								  			type="button"
+								  			id="btnLimpar" 
+								  			class="btn btn-default">
+												<span class="glyphicon glyphicon-repeat">&nbsp;</span>
+								  				Limpar
+								  		</button>
+							  		</div>
+						  		
 						  		
 						  		<button 
 						  			type="button"
@@ -95,10 +141,11 @@
 						  			
 						  			data-toggle="modal"
 						  			data-target="#modal-sortear-times"
-						  			class="btn btn-default btn-lg">
-						  			<span class="glyphicon glyphicon-star"></span>Sortear Times
+						  			class="btn btn-info btn-lg">
+						  			<span class="glyphicon glyphicon-star">&nbsp;</span>Sortear Times
 						  		</button>
 
+						  		<!-- Modal simples - Mensagem sortear times -->
 								<div class="modal fade" id="modal-sortear-times">
 							  		<div class="modal-dialog">
 							  			<div class="modal-content">
@@ -143,10 +190,10 @@
 				  				<h3>Jogadores por time</h3>
 								
 								<div class="btn-group">	
-									<a data-value="2" class="botao-numero-jogadores btn btn-info active">2</a>
-					  				<a data-value="4" class="botao-numero-jogadores btn btn-info">4</a>
-					  				<a data-value="6" class="botao-numero-jogadores btn btn-info">6</a>
-					  				<a data-value="8" class="botao-numero-jogadores btn btn-info">8</a>
+									<a data-value="4" class="botao-numero-jogadores btn btn-primary active">4</a>
+					  				<a data-value="6" class="botao-numero-jogadores btn btn-primary">6</a>
+					  				<a data-value="8" class="botao-numero-jogadores btn btn-primary">8</a>
+					  				<a data-value="10" class="botao-numero-jogadores btn btn-primary">10</a>
 				  				</div>
 							
 				  			</div>
@@ -204,7 +251,6 @@
 				  				</div>
 				  			</div>
 			  			</section>
-
 			  		</section>
 				</div>
   			</div>	
