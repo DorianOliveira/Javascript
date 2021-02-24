@@ -1,0 +1,42 @@
+<!-- Button --> 
+
+@forEach( var item in Model)
+{
+<a class="link"
+   data-dynamic-modal-trigger
+   data-dynamic-modal-lesson-title='{"name":"lessonTitle","attribute":"value","value":"@item.Title"}'
+   data-dynamic-modal-lesson-category='{"name":"lessonCategory","attribute":"value","value":"@item.Category"}'
+   data-toggle="modal" data-target="#modal">Editar</a>
+}
+
+<!-- Modal -->
+<!-- Explanation
+1. Use the data-dynamic-modal in the container (or Bootstrap modal, how i use in this sample)
+2. In the elements you will show the value, use the "data-dynamic-modal-item" attribute. Set its value with the "name" used in the element that haves the "data-dynamic-modal-trigger" attribute
+
+-->
+<div data-dynamic-modal id="modal-insert-video" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" asp-action="UpdateLesson">
+                <div class="modal-header">
+                    <h5 class="modal-title">Inserir Vídeo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <!-- here, we use the "data-dynamic-modal-item" and the name "lessonTitle" to show the "data-dynamic-modal-lesson-title" in the trigger button -->
+                    <input type="text" class="form-control" disabled data-dynamic-modal-item="lessonTitle" type="text" />
+                    <input class="form-control" placeholder="Categoria" data-dynamic-modal-item="category" type="text" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
